@@ -1,4 +1,5 @@
-import { Bell, CircleUserRound } from 'lucide-react';
+import { Bell, CircleUserRound } from 'lucide-react'
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -19,21 +20,19 @@ export const Header = () => {
                 <div>
                     <h3>Goor Morning User</h3>
                 </div>
-                <div className='flex gap-5 items-center'>
-                    {
-                        HeaderDropDownLists.map(item => (
-                            <DropdownMenu key={item.id}>
-                                <DropdownMenuTrigger >
-                                    {item.trigger}
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent>
-                                    <DropdownMenuRadioGroup>
-                                        <DropdownMenuRadioItem value={item.title}>{item.title}</DropdownMenuRadioItem>
-                                    </DropdownMenuRadioGroup>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        ))
-                    }
+                <div className="flex gap-5 items-center">
+                    {HeaderDropDownLists.map((item) => (
+                        <DropdownMenu key={item.id}>
+                            <DropdownMenuTrigger>{item.trigger}</DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuRadioGroup>
+                                    <DropdownMenuRadioItem value={item.title}>
+                                        {item.title}
+                                    </DropdownMenuRadioItem>
+                                </DropdownMenuRadioGroup>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    ))}
                 </div>
             </div>
         </header>
