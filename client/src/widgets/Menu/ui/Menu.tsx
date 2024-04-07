@@ -21,7 +21,7 @@ export const Menu = () => {
                                     {item.img}
                                     <p className='text-xs leading-32'>{item.title}</p>
                                 </li>
-                            </Link>
+                      </Link>
                         ))
                     }
                 </ul>
