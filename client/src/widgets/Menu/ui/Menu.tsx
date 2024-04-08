@@ -12,7 +12,7 @@ export const Menu = () => {
     ]
 
     return (
-        <div className="bg-white max-h-17 flex justify-center">
+        <div className="bg-card max-h-17 flex justify-center">
             <div className="container max-w-96">
                 <ul className="grid grid-cols-4">
                     {MenuList.map((item) => (
