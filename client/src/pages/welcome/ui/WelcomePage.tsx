@@ -1,13 +1,12 @@
-import { Header } from '@/widgets/Header/Header'
+import { Header } from '@/widgets/Header/ui/Header'
 import { Menu } from '@/widgets/Menu'
 
 export const WelcomePage = () => {
     return (
         <>
             <Header />
-            <div>
-                <Menu />
-            </div>
+            <main></main>
+            <Menu />
         </>
     )
 }
