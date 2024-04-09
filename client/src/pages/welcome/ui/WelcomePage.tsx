@@ -1,12 +1,14 @@
+import { Footer } from '@/widgets/Footer'
 import { Header } from '@/widgets/Header/ui/Header'
-import { Menu } from '@/widgets/Menu'
 
 export const WelcomePage = () => {
     return (
         <>
             <Header />
-            <main></main>
-            <Menu />
+            <main>
+                <section></section>
+            </main>
+                <Footer />
         </>
     )
 }
