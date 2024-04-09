@@ -16,12 +16,14 @@ import { SECRET_JWT_KEY } from '../../constants'
         UserModule,
         PassportModule,
         JwtModule.register({
+            global: true,
             secret: SECRET_JWT_KEY,
-            signOptions: { expiresIn: '60s' },
+            signOptions: { expiresIn: '30d' },
         }),
         MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     ],
     providers: [AuthService, UserService, LocalStrategy],
     controllers: [AuthController],
+    exports: [AuthService],
 })
 export class AuthModule {}
