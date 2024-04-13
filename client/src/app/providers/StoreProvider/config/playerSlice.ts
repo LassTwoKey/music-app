@@ -1,22 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
 const initialState = {
-    audioUrl:null,
+    playerInfo: {
+        audioUrl: null,
+        name: null,
+        author: null,
+        size: null,
+        duration: 0,
+        imgUrl: 'https://thicc-af.mywaifulist.moe/waifus/makima/YlEvAFSWo7WrlgXmwIRyksCooOxsX1rVCqxUN4Vz.png?class=thumbnail',
+    },
 }
 
 const playerSlice = createSlice({
-    name:'player',
+    name: 'player',
     initialState,
-    reducers:{
-         onGetAudioUrl: (state, action) =>{
-             state.audioUrl = action.payload;
-         }
-    }
+    reducers: {
+        setPlayerInfo(state, action) {
+            state.playerInfo = {
+                ...state.playerInfo,
+                ...action.payload,
+            }
+        },
+    },
 })
 
-
-export const {
-    onGetAudioUrl
-} = playerSlice.actions
+export const { setPlayerInfo } = playerSlice.actions
 export default playerSlice.reducer
