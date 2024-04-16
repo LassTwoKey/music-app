@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import playerSlice from '../config/playerSlice'
+
+import appPlayerSlice from './appPlayerSlice'
 
 export const store = configureStore({
     reducer: {
-        playerSlice
+        appPlayerSlice,
     },
 })
 

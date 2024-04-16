@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-interface PlayerState {
+interface AppPlayerState {
     audioUrl: null | string
     name: null | string
     author: null | string
@@ -9,7 +9,7 @@ interface PlayerState {
     imgUrl: null | string
 }
 
-const initialState: { playerInfo: PlayerState } = {
+const initialState: { playerInfo: AppPlayerState } = {
     playerInfo: {
         audioUrl: null,
         name: null,
@@ -20,11 +20,11 @@ const initialState: { playerInfo: PlayerState } = {
     },
 }
 
-const playerSlice = createSlice({
-    name: 'player',
+const appPlayerSlice = createSlice({
+    name: 'appPlayer',
     initialState,
     reducers: {
-        setPlayerInfo(state, action) {
+        setAppPlayerInfo(state, action) {
             state.playerInfo = {
                 ...state.playerInfo,
                 ...action.payload,
@@ -33,5 +33,5 @@ const playerSlice = createSlice({
     },
 })
 
-export const { setPlayerInfo } = playerSlice.actions
-export default playerSlice.reducer
+export const { setAppPlayerInfo } = appPlayerSlice.actions
+export default appPlayerSlice.reducer

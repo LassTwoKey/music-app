@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '@/app/providers/StoreProvider'
-import { setPlayerInfo } from '@/app/providers/StoreProvider/config/playerSlice'
+import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayerSlice'
 import { convertSecondsToTime } from '@/shared/lib/player'
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui/button'
@@ -13,10 +13,10 @@ import { Slider } from '@/shared/ui/slider'
 
 import epicLogo from './epiclogo.jpg'
 
-export const Player = () => {
+export const AppPlayer = () => {
     const {
         playerInfo: { audioUrl, name, author, duration, imgUrl },
-    } = useSelector((state: RootState) => state.playerSlice)
+    } = useSelector((state: RootState) => state.appPlayerSlice)
     const [isPlaying, setIsPlaying] = useState(false)
     const [volume, setVolume] = useState(1)
     const [isMuted, setIsMuted] = useState(false)
@@ -45,7 +45,7 @@ export const Player = () => {
                 duration: 0,
                 imgUrl: epicLogo,
             }
-            dispatch(setPlayerInfo(inf))
+            dispatch(setAppPlayerInfo(inf))
         }
         reader.readAsDataURL(file)
     }
@@ -60,7 +60,7 @@ export const Player = () => {
             // это убрать (временно тут)
             audioRef.current.onloadedmetadata = () => {
                 dispatch(
-                    setPlayerInfo({
+                    setAppPlayerInfo({
                         duration: audioRef.current?.duration,
                     }),
                 )
