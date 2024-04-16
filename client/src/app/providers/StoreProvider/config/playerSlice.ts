@@ -1,13 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+interface PlayerState {
+    audioUrl: null | string
+    name: null | string
+    author: null | string
+    size: null | number
+    duration: number
+    imgUrl: null | string
+}
+
+const initialState: { playerInfo: PlayerState } = {
     playerInfo: {
         audioUrl: null,
         name: null,
         author: null,
         size: null,
         duration: 0,
-        imgUrl: 'https://thicc-af.mywaifulist.moe/waifus/makima/YlEvAFSWo7WrlgXmwIRyksCooOxsX1rVCqxUN4Vz.png?class=thumbnail',
+        imgUrl: null,
     },
 }
 
