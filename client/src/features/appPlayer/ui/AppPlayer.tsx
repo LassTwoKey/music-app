@@ -27,6 +27,7 @@ export const AppPlayer = () => {
         ? 'opacity-100 visible'
         : 'opacity-0 invisible'
     const audioRef = useRef<HTMLAudioElement>(null)
+    console.log(volume)
 
     // это убрать (временно тут)
     const dispatch = useDispatch()
@@ -93,20 +94,17 @@ export const AppPlayer = () => {
     }
 
     const mutedMusic = () => {
+        setIsMuted(!isMuted)
         if (!audioRef.current) {
             return
         }
         if (isMuted) {
-            audioRef.current.muted = false
             setVolume(1)
             audioRef.current.volume = 1
         } else {
-            audioRef.current.muted = true
-
-            setVolume(0)
             audioRef.current.volume = 0
+            setVolume(0)
         }
-        setIsMuted(!isMuted)
     }
 
     const handleVolumeChange = (volume: number[]) => {
@@ -114,6 +112,7 @@ export const AppPlayer = () => {
         if (audioRef.current) {
             audioRef.current.volume = volume[0]
         }
+        setIsMuted(volume[0] === 0)
     }
 
     const handleTimeChange = (time: number[]) => {
