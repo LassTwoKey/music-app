@@ -1,18 +1,17 @@
 import {
     Body,
     Controller,
+    Delete,
     Get,
     HttpStatus,
+    Param,
     Post,
     Res,
-    UploadedFiles,
     UseGuards,
-    UseInterceptors,
 } from '@nestjs/common'
 import { UserService } from '../../service/user/user.service'
 import { User } from '../../schema/user.schema'
 import * as bcrypt from 'bcrypt'
-import { FileFieldsInterceptor } from '@nestjs/platform-express'
 import { AuthGuard } from '../auth/auth.guard'
 
 @Controller('auth')
@@ -20,25 +19,33 @@ export class UserController {
     constructor(private readonly usersService: UserService) {}
 
     @Post('/signup')
-    @UseInterceptors(FileFieldsInterceptor([{ name: 'avatar', maxCount: 1 }]))
     async createUser(
-        @UploadedFiles()
-        files: { avatar?: Express.Multer.File[] },
-        @Body('password') password: string,
+        @Body('password')
+        password: string,
         @Body('username') username: string,
+        @Body('avatar') avatar: string,
     ): Promise<User> {
         const saltOrRounds = 10
         const hashedPassword = await bcrypt.hash(password, saltOrRounds)
-        const result = await this.usersService.createUser(username, hashedPassword, files?.avatar)
+        const result = await this.usersService.createUser(username, hashedPassword, avatar)
         return result
     }
 
     @UseGuards(AuthGuard)
     @Get('/users')
     async findAllUser(@Res() response: any) {
-        const musicList = await this.usersService.findAllUser()
+        const userList = await this.usersService.findAllUser()
         return response.status(HttpStatus.OK).json({
-            musicList,
+            userList,
+        })
+    }
+
+    @UseGuards(AuthGuard)
+    @Delete('/users/:id')
+    async delete(@Res() response: any, @Param('id') id: string) {
+        const deletedUser = await this.usersService.deleteUser(id)
+        return response.status(HttpStatus.OK).json({
+            deletedUser,
         })
     }
 }

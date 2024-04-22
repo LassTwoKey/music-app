@@ -6,7 +6,7 @@ import { User, UserDocument } from '../../schema/user.schema'
 @Injectable()
 export class UserService {
     constructor(@InjectModel(User.name) private readonly userModel: Model<UserDocument>) {}
-    async createUser(username: string, password: string, avatar: any): Promise<User> {
+    async createUser(username: string, password: string, avatar: string): Promise<User> {
         return this.userModel.create({
             username,
             password,
@@ -18,5 +18,8 @@ export class UserService {
     }
     async findAllUser() {
         return await this.userModel.find().exec()
+    }
+    async deleteUser(id: string): Promise<User | null> {
+        return await this.userModel.findOneAndDelete({ _id: id }).exec()
     }
 }
