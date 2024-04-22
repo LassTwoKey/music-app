@@ -1,5 +1,5 @@
 import { Moon, SunMoon } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/shared/ui/button'
 
@@ -12,14 +12,20 @@ export const ThemeButton = () => {
 
     const onDarkHandler = () => {
         localStorage.theme = 'dark'
-        document.documentElement.classList.add('dark')
         setIsDark(true)
     }
     const onLightHandler = () => {
         localStorage.theme = 'light'
-        document.documentElement.classList.remove('dark')
         setIsDark(false)
     }
+
+    useEffect(() => {
+        if (isDark) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    }, [isDark])
 
     const clickHandler = () => {
         if (isDark) {
