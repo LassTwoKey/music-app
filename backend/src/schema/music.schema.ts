@@ -10,6 +10,12 @@ export class Music {
 
     @Prop()
     author: string
+
+    @Prop()
+    audioId: string
+
+    @Prop()
+    genres: string[]
 }
 
 export const MusicSchema = SchemaFactory.createForClass(Music)
