@@ -1,4 +1,11 @@
+import { MusicList } from "@/features/musicList"
 
 export const FeedPage = () => {
-    return <div>FeedPage</div>
+    return (
+        <>
+        <section className="pt-5">
+             <MusicList/>
+        </section>
+        </>
+    )
 }

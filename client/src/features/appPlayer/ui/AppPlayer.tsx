@@ -34,20 +34,20 @@ export const AppPlayer = () => {
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (!event.target?.files) return
 
-        const file = event.target.files[0]
+    //     const file = event.target.files[0]
 
-        const reader = new FileReader()
-        reader.onload = function () {
-            const inf = {
-                audioUrl: reader.result,
-                name: file.name,
-                size: file.size,
-                duration: 0,
-                imgUrl: epicLogo,
-            }
-            dispatch(setAppPlayerInfo(inf))
-        }
-        reader.readAsDataURL(file)
+    //     const reader = new FileReader()
+    //     reader.onload = function () {
+    //         const inf = {
+    //             audioUrl: reader.result,
+    //             name: file.name,
+    //             size: file.size,
+    //             duration: 0,
+    //             imgUrl: epicLogo,
+    //         }
+    //         dispatch(setAppPlayerInfo(inf))
+    //     }
+    //     reader.readAsDataURL(file)
     }
     // =========================
 
