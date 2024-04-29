@@ -33,13 +33,13 @@ export class SingerController {
         return response.status(HttpStatus.OK).json(singers)
     }
 
-    // @Get(':id')
-    // async findById(@Res() response: any, @Param('id') id: string) {
-    //     const music = await this.musicService.findMusicById(id)
-    //     return response.status(HttpStatus.OK).json({
-    //         ...music,
-    //     })
-    // }
+    @Get(':id')
+    async findById(@Res() response: any, @Param('id') id: string) {
+        const singer = await this.singerService.findSingerById(id)
+        return response.status(HttpStatus.OK).json({
+            ...singer,
+        })
+    }
 
     @UseGuards(AuthGuard)
     @Put(':id')

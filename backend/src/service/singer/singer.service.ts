@@ -34,6 +34,21 @@ export class SingerService {
         return []
     }
 
+    async findSingerById(id: string): Promise<any> {
+        const findedSinger = await this.singerModel.findById(id).exec()
+        if (findedSinger) {
+            return {
+                id: findedSinger._id,
+                name: findedSinger?.name,
+                author: findedSinger?.music,
+            }
+        }
+
+        return {
+            status: 'not updated',
+        }
+    }
+
     async updateSinger(id: string, singer: Singer): Promise<any> {
         const updatedSinger = await this.singerModel.findByIdAndUpdate(id, singer, { new: true })
 
