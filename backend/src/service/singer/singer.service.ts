@@ -16,6 +16,7 @@ export class SingerService {
             status: 'successfully created',
             id: (await savedSinger)._id,
             name: (await savedSinger).name,
+            imgUrl: (await savedSinger).imgUrl,
             music: (await savedSinger).music,
         }
     }
@@ -27,6 +28,7 @@ export class SingerService {
             return singers.map((singer) => ({
                 id: singer._id,
                 name: singer?.name,
+                imgUrl: singer.imgUrl,
                 music: singer?.music,
             }))
         }
@@ -40,6 +42,7 @@ export class SingerService {
             return {
                 id: findedSinger._id,
                 name: findedSinger?.name,
+                imgUrl: findedSinger.imgUrl,
                 author: findedSinger?.music,
             }
         }
@@ -57,6 +60,7 @@ export class SingerService {
                 status: 'successfully updated',
                 id: updatedSinger?._id,
                 name: updatedSinger?.name,
+                imgUrl: updatedSinger?.imgUrl,
                 music: updatedSinger?.music,
             }
         }
@@ -68,10 +72,12 @@ export class SingerService {
 
     async deleteSinger(id: string): Promise<any> {
         const deletedSinger = await this.singerModel.findOneAndDelete({ _id: id }).exec()
+
         return {
             status: 'successfully deleted',
             id: deletedSinger?._id,
             name: deletedSinger?.name,
+            imgUrl: deletedSinger?.imgUrl,
             music: deletedSinger?.music,
         }
     }
