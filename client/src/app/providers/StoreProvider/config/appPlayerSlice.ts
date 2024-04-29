@@ -7,7 +7,9 @@ interface AppPlayerState {
     size: null | number
     duration: number
     imgUrl: null | string
+    audioId?: null | string
 }
+
 
 const initialState: { playerInfo: AppPlayerState } = {
     playerInfo: {
