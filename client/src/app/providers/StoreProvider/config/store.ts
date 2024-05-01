@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import appPlayerSlice from './appPlayerSlice'
+import appPlayerStatus from './appPlayerStatus'
 
 export const store = configureStore({
     reducer: {
         appPlayerSlice,
+        appPlayerStatus,
     },
 })
 
