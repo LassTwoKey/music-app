@@ -16,7 +16,7 @@ export const fetchMusicInfoList = createAsyncThunk<MusicInfo[]>(
 )
 
 export const onGetAudioInfoById = async (id: string) => {
-    const coreApi = `https://music-app-production-0189.up.railway.app`
+    // const coreApi = `https://music-app-production-0189.up.railway.app`
     const response = await axios.get(`${coreApi}/audio/${id}`)
     return response.data
 }
