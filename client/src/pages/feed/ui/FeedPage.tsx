@@ -1,10 +1,10 @@
-import { MusicList } from "@/features/musicList"
+// import { MusicList } from "@/features/musicList"
 
 export const FeedPage = () => {
     return (
         <>
         <section className="pt-5">
-             <MusicList/>
+             {/* <MusicList/> */}
         </section>
         </>
     )
