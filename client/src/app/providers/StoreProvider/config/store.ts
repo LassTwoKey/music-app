@@ -6,7 +6,7 @@ import appPlayerStatus from './appPlayerStatus'
 export const store = configureStore({
     reducer: {
         appPlayerSlice,
-        appPlayerStatus
+        appPlayerStatus,
     },
 })
 

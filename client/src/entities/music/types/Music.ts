@@ -1,6 +1,3 @@
-export interface Music {
-    name: string
-}
 export interface MusicInfo {
     _id: string
     name: string
