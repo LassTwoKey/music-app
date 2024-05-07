@@ -6,7 +6,7 @@ import { fetchMusicInfoList } from '@/shared/api/music'
 import { Card } from '@/shared/ui/card'
 import { Spinner } from '@/shared/ui/spinner'
 
-import { setAppPlayerInfo } from '../../../app/providers/StoreProvider/config/appPlayerSlice'
+import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayerSlice'
 import epiclogo from '../../appPlayer/ui/epiclogo.jpg'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 
