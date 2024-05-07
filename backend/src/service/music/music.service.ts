@@ -19,6 +19,7 @@ export class MusicService {
             name: (await savedMusic)?.name,
             author: (await savedMusic)?.author,
             audioId: (await savedMusic)?.audioId,
+            imgUrl: (await savedMusic)?.imgUrl,
             genres: (await savedMusic)?.genres,
         }
     }
@@ -32,6 +33,7 @@ export class MusicService {
                 name: music?.name,
                 author: music?.author,
                 audioId: music?.audioId,
+                imgUrl: music?.imgUrl,
                 genres: music?.genres,
             }))
         }
@@ -47,6 +49,7 @@ export class MusicService {
                 name: findedMusic?.name,
                 author: findedMusic?.author,
                 audioId: findedMusic?.audioId,
+                imgUrl: findedMusic?.imgUrl,
                 genres: findedMusic?.genres,
             }
         }
@@ -65,6 +68,7 @@ export class MusicService {
                 name: music?.name,
                 author: music?.author,
                 audioId: music?.audioId,
+                imgUrl: music?.imgUrl,
                 genres: music?.genres,
             }
         }
@@ -81,7 +85,7 @@ export class MusicService {
             id: deletedMusic?._id,
             name: deletedMusic?.name,
             author: deletedMusic?.author,
-            audioId: deletedMusic?.audioId,
+            imgUrl: deletedMusic?.imgUrl,
             genres: deletedMusic?.genres,
         }
     }
