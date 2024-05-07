@@ -15,6 +15,9 @@ export class Music {
     audioId: string
 
     @Prop()
+    imgUrl: string
+
+    @Prop()
     genres: string[]
 }
 

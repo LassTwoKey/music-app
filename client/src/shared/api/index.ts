@@ -1,1 +1,1 @@
-export const coreApi = 'http://localhost:3000'
+export const coreApi = import.meta.env.VITE_CORE_API 
