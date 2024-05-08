@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 
 import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayerSlice'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
-import epiclogo from '@/features/appPlayer/ui/epiclogo.jpg'
 import { Card } from '@/shared/ui/card'
 
 interface CaruselMusic {

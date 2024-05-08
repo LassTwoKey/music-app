@@ -42,7 +42,7 @@ export const MusicList = () => {
                                 onClick={() =>
                                     handleMusicInfo(item.name, item.author, item.audioId)
                                 }
-                                key={item._id}
+                                key={item.id}
                                 className="py-2 px-2 "
                             >
                                 <div className="flex items-center gap-3">
