@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '@/app/providers/StoreProvider'
 import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayerSlice'
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { onGetAudioInfoById } from '@/shared/api/music'
 
 import { AppPlayerSkeleton } from './AppPlayerSkeleton'
@@ -10,7 +11,6 @@ import { PlayButton } from './PlayButton'
 import { PlayerInfo } from './PlayerInfo'
 import { ProgressBar } from './ProgressBar'
 import { VolumeButton } from './VolumeButton'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 
 export const AppPlayer = () => {
     const {

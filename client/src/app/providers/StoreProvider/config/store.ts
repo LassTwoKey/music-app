@@ -1,12 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 
+import appMediaSlise from './appMediaSlise'
 import appPlayerSlice from './appPlayerSlice'
 import appPlayerStatus from './appPlayerStatus'
+import appSingerSlice from './appSingerSlice'
 
 export const store = configureStore({
     reducer: {
         appPlayerSlice,
         appPlayerStatus,
+        appSingerSlice,
+        appMediaSlise,
     },
 })
 

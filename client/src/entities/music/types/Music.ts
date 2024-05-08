@@ -1,7 +1,8 @@
 export interface MusicInfo {
-    _id: string
+    id: string
     name: string
     author: string
     audioId: string
+    imgUrl: string
     genres: string[]
 }
