@@ -1,9 +1,11 @@
 import React from 'react'
+
+import { MusicInfo } from '@/entities/music/types/Music'
 import { Carousel, CarouselContent } from '@/shared/ui/carousel'
 
+import { CaruselMedia } from './caruselMedia'
 import { CaruselMusic } from './caruselMusic'
 import { CaruselSinger } from './caruselSinger'
-import { CaruselMedia } from './caruselMedia'
 
 interface SlidesInfo {
     id: string
@@ -14,7 +16,7 @@ interface SlidesInfo {
 }
 
 interface SlidesInfoProps {
-    slidesInfo: SlidesInfo[]
+    slidesInfo: SlidesInfo[] | MusicInfo[]
     typeCarousel: 'media' | 'singer' | 'music'
     nameSection: string
 }
@@ -30,7 +32,7 @@ export const CarouselBlock: React.FC<SlidesInfoProps> = ({
     return (
         <div className="container">
             <div className="flex justify-between mb-3">
-                <h3 className="text-primary-foreground font-semibold">{nameSection}</h3>
+                <h3 className="text-primary-foreground  text-xl font-semibold">{nameSection}</h3>
                 <a href="#">See all</a>
             </div>
             <Carousel className="w-full">
@@ -55,17 +57,16 @@ export const CarouselBlock: React.FC<SlidesInfoProps> = ({
                                 name={item.name}
                             />
                         ))}
-                       {isMedia &&
-                        slidesInfo.map((item)=>(
+                    {isMedia &&
+                        slidesInfo.map((item) => (
                             <CaruselMedia
-                            id={item.id}
-                            typeCarousel={typeCarousel}
-                            imgUrl={item.imgUrl}
-                            title={item.name}
-                            desc={item.author}
-                        />
-                        ))
-                       }
+                                id={item.id}
+                                typeCarousel={typeCarousel}
+                                imgUrl={item.imgUrl}
+                                title={item.name}
+                                desc={item.author}
+                            />
+                        ))}
                 </CarouselContent>
             </Carousel>
         </div>

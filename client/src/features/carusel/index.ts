@@ -1,1 +1,1 @@
-export {CarouselBlock} from './ui/caruselBlock'
+export { CarouselBlock } from './ui/caruselBlock'

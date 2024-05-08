@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '@/app/providers/StoreProvider'
+import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayerSlice'
+import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { fetchMusicInfoList } from '@/shared/api/music'
 import { Card } from '@/shared/ui/card'
 import { Spinner } from '@/shared/ui/spinner'
 
-import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayerSlice'
 import epiclogo from '../../appPlayer/ui/epiclogo.jpg'
-import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 
 export const MusicList = () => {
     const { musicInfoList, appPlayerStatus } = useSelector(
