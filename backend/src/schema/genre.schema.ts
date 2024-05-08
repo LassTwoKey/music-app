@@ -8,6 +8,9 @@ export class Genre {
     @Prop()
     name: string
 
+    @Prop()
+    imgUrl: string
+
     @Prop({ type: Array })
     music: []
 }

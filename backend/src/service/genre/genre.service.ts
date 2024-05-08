@@ -16,6 +16,7 @@ export class GenreService {
             status: 'successfully created',
             id: (await savedGenre)._id,
             name: (await savedGenre)?.name,
+            imgUrl: (await savedGenre)?.imgUrl,
             musicIds: (await savedGenre)?.music.map((item: any) => item.id),
         }
     }
@@ -27,6 +28,7 @@ export class GenreService {
             return genreList.map((genre) => ({
                 id: genre._id,
                 name: genre?.name,
+                imgUrl: genre?.imgUrl,
                 music: genre?.music,
             }))
         }
@@ -40,6 +42,7 @@ export class GenreService {
             return {
                 id: findedGenre._id,
                 name: findedGenre?.name,
+                imgUrl: findedGenre?.imgUrl,
                 music: findedGenre?.music,
             }
         }
@@ -56,6 +59,7 @@ export class GenreService {
             return {
                 id: updatedGenre?._id,
                 name: updatedGenre?.name,
+                imgUrl: updatedGenre?.imgUrl,
                 musicIds: updatedGenre?.music.map((item: any) => item.id),
             }
         }
@@ -71,6 +75,7 @@ export class GenreService {
             status: 'successfully deleted',
             id: deletedGenre?._id,
             name: deletedGenre?.name,
+            imgUrl: deletedGenre?.imgUrl,
             musicIds: deletedGenre?.music.map((item: any) => item.id),
         }
     }
