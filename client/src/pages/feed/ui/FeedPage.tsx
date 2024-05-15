@@ -24,7 +24,7 @@ export const FeedPage = () => {
             <section className="pt-5">
                 <CarouselBlock
                     slidesInfo={appMedianfoList}
-                    typeCarousel="media"
+                    typeCarousel="genre"
                     nameSection="Made For You"
                 />
             </section>

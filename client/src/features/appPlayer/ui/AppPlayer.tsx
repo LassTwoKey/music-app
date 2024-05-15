@@ -17,7 +17,7 @@ export const AppPlayer = () => {
         playerInfo: { audioUrl, name, author, duration, imgUrl, audioId },
     } = useSelector((state: RootState) => state.appPlayerSlice)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [appPlayerStatus] = useState('idle')
+    const [isLoading] = useState(false)
     const [volume, setVolume] = useState(1)
     const [isMuted, setIsMuted] = useState(false)
     const [timeInterval, setTimeInterval] = useState<string | number | NodeJS.Timeout | undefined>()
@@ -33,20 +33,16 @@ export const AppPlayer = () => {
 
     useEffect(() => {
         if (audioId) {
-            setIsOpenAudioPlayer(true)
-            onGetAudioInfoById(audioId).then((res) => {
-                if (audioRef.current) {
-                    audioRef.current.src = 'data:audio/mpeg;base64,' + res.file.buffer
-                    audioRef.current.onloadedmetadata = () => {
-                        dispatch(
-                            setAppPlayerInfo({
-                                duration: audioRef.current?.duration,
-                            }),
-                        )
-                    }
-                }
-            })
-        }
+        setIsOpenAudioPlayer(true);
+        onGetAudioInfoById(audioId).then((res) => {
+            if (audioRef.current) {
+                audioRef.current.src = 'data:audio/mpeg;base64,' + res.file.buffer;
+                audioRef.current.onloadedmetadata = () => {
+                    dispatch(setAppPlayerInfo({ duration: audioRef.current?.duration }));
+                };
+            }
+        });
+    }
         clearInterval(timeInterval)
         setCurrentTime(0)
         setIsPlaying(false)
@@ -110,7 +106,7 @@ export const AppPlayer = () => {
                 <div
                     className={`bg-card py-2 px-2 border-b-2 ${isOpenOrCloseAudioPlayer} transition-opacity ease-out duration-300`}
                 >
-                    {appPlayerStatus === 'loading' ? (
+                    {isLoading ? (
                         <>
                             <AppPlayerSkeleton />
                         </>
