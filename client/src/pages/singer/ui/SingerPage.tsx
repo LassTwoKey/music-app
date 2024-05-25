@@ -16,8 +16,6 @@ export const SingerPage = () => {
     }, [singerId])
 
     return (
-        <>
            <InfoPage infoPageList={appSingerPageInfoList}/>
-        </>
     )
 }

@@ -6,7 +6,6 @@ import { setAppPlayerInfo } from '@/app/providers/StoreProvider/config/appPlayer
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store'
 import { onGetAudioInfoById } from '@/shared/api/music'
 
-import { AppPlayerSkeleton } from './AppPlayerSkeleton'
 import { PlayButton } from './PlayButton'
 import { PlayerInfo } from './PlayerInfo'
 import { ProgressBar } from './ProgressBar'
@@ -17,7 +16,6 @@ export const AppPlayer = () => {
         playerInfo: { audioUrl, name, author, duration, imgUrl, audioId },
     } = useSelector((state: RootState) => state.appPlayerSlice)
     const [isPlaying, setIsPlaying] = useState(false)
-    const [isLoading] = useState(false)
     const [volume, setVolume] = useState(1)
     const [isMuted, setIsMuted] = useState(false)
     const [timeInterval, setTimeInterval] = useState<string | number | NodeJS.Timeout | undefined>()
@@ -106,12 +104,6 @@ export const AppPlayer = () => {
                 <div
                     className={`bg-card py-2 px-2 border-b-2 ${isOpenOrCloseAudioPlayer} transition-opacity ease-out duration-300`}
                 >
-                    {isLoading ? (
-                        <>
-                            <AppPlayerSkeleton />
-                        </>
-                    ) : (
-                        <>
                             <audio ref={audioRef} className="w-full">
                                 {audioUrl && <source src={audioUrl} type="audio/mpeg" />}
                             </audio>
@@ -131,8 +123,6 @@ export const AppPlayer = () => {
                                 handleTimeChange={handleTimeChange}
                                 currentTime={currentTime}
                             />
-                        </>
-                    )}
                 </div>
             </div>
         </>

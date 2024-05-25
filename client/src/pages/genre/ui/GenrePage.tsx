@@ -7,17 +7,13 @@ import { InfoPage } from "@/features/infoPage/ui/InfoPage"
 
 export const GenrePage = () => {
     const {genreId} = useParams()
-    console.log(genreId)
     const {appGenrePageInfoList} = useSelector((state:RootState)=> state.appGenresPageSlice)
     const dispatch = useDispatch<AppDispatch>()
-    console.log(appGenrePageInfoList)
 
     useEffect(() => {
         dispatch(fetchGenrePageInfoList(genreId))
     },[genreId])
     return (
-        <>
          <InfoPage infoPageList={appGenrePageInfoList}/>
-        </>
     )
 }

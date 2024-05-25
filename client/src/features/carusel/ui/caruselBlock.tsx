@@ -39,7 +39,6 @@ export const CarouselBlock: React.FC<SlidesInfoProps> = ({
     }, [slidesInfo])
 
     return (
-        <>
             <div className="container">
                 {isLoading ? (
                     <Spinner />
@@ -98,6 +97,5 @@ export const CarouselBlock: React.FC<SlidesInfoProps> = ({
                     </>
                 )}
             </div>
-        </>
     )
 }
