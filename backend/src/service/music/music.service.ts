@@ -58,6 +58,10 @@ export class MusicService {
             status: 'not updated',
         }
     }
+    async findMusicByIds(ids: string[]): Promise<any> {
+        const findedMusic = await this.musicModel.find({ _id: { $in: ids } }).exec()
+        return findedMusic
+    }
 
     async updateMusic(id: string, Product: Music): Promise<any> {
         const music = await this.musicModel.findByIdAndUpdate(id, Product, { new: true })

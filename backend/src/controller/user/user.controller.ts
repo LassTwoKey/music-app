@@ -6,6 +6,7 @@ import {
     HttpStatus,
     Param,
     Post,
+    Put,
     Res,
     UseGuards,
 } from '@nestjs/common'
@@ -24,10 +25,16 @@ export class UserController {
         password: string,
         @Body('username') username: string,
         @Body('avatar') avatar: string,
-    ): Promise<User> {
+        @Body('favoriteMusicIds') favoriteMusicIds: any,
+    ): Promise<User | any> {
         const saltOrRounds = 10
         const hashedPassword = await bcrypt.hash(password, saltOrRounds)
-        const result = await this.usersService.createUser(username, hashedPassword, avatar)
+        const result = await this.usersService.createUser({
+            username,
+            password: hashedPassword,
+            avatar,
+            favoriteMusicIds,
+        })
         return result
     }
 
@@ -35,17 +42,37 @@ export class UserController {
     @Get('/users')
     async findAllUser(@Res() response: any) {
         const userList = await this.usersService.findAllUser()
-        return response.status(HttpStatus.OK).json({
-            userList,
-        })
+        return response.status(HttpStatus.OK).json(userList)
     }
 
     @UseGuards(AuthGuard)
     @Delete('/users/:id')
-    async delete(@Res() response: any, @Param('id') id: string) {
+    async deleteUser(@Res() response: any, @Param('id') id: string) {
         const deletedUser = await this.usersService.deleteUser(id)
-        return response.status(HttpStatus.OK).json({
-            deletedUser,
+        return response.status(HttpStatus.OK).json(deletedUser)
+    }
+
+    // favorites
+    @UseGuards(AuthGuard)
+    @Get('/user/favorites/:username')
+    async findFavoritesByUser(@Res() response: any, @Param('username') username: string) {
+        const favorites = await this.usersService.findFavoritesByUser(username)
+        return response.status(HttpStatus.OK).json(favorites)
+    }
+
+    @UseGuards(AuthGuard)
+    @Put('/user/favorites')
+    async updateFavoritesByUser(
+        @Res() response: any,
+        @Body('username') username: string,
+        @Body('favoriteMusicIds') favoriteMusicIds: string[],
+        @Body('isDelete') isDelete: boolean,
+    ) {
+        const result = await this.usersService.updateFavoritesByUser({
+            username,
+            favoriteMusicIds,
+            isDelete,
         })
+        return response.status(HttpStatus.OK).json(result)
     }
 }

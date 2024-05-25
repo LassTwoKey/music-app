@@ -11,13 +11,11 @@ export class User {
     @Prop()
     password: string
 
-    @Prop({ type: Object })
-    avatar: {
-        filename: string
-        originalname: string
-        mimetype: string
-        size: number
-    }
+    @Prop()
+    avatar: string
+
+    @Prop({ type: Array })
+    favoriteMusicIds: string[]
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)

@@ -11,5 +11,6 @@ import { Music, MusicSchema } from '../../schema/music.schema'
     imports: [MongooseModule.forFeature([{ name: Music.name, schema: MusicSchema }])],
     controllers: [AppController, MusicController],
     providers: [AppService, MusicService],
+    exports: [MusicService],
 })
 export class MusicModule {}
