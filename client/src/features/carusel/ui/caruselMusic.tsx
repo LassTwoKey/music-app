@@ -11,13 +11,13 @@ interface CaruselMusic {
     imgUrl: string
     name: string
     author: string
-    audioId: string
+    audioId: string | undefined
 }
 
 export const CaruselMusic: FC<CaruselMusic> = ({ id, imgUrl, name, author, audioId }) => {
     const dispatch = useDispatch<AppDispatch>()
 
-    async function handleMusicInfo(name: string, author: string, audioId: string) {
+    async function handleMusicInfo(name: string, author: string, audioId: string | undefined) {
         const musicInfo = {
             name,
             author,
