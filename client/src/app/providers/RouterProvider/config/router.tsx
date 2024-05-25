@@ -6,6 +6,8 @@ import { PlaylistPage } from '@/pages/playlist'
 import { Root } from '@/pages/root'
 import { SettingsPage } from '@/pages/settings'
 import { WelcomePage } from '@/pages/welcome'
+import { SingerPage } from '@/pages/singer/ui/SingerPage'
+import { GenrePage } from '@/pages/genre/ui/GenrePage'
 
 const routes = [
     {
@@ -32,6 +34,14 @@ const routes = [
                 path: 'settings',
                 element: <SettingsPage />,
             },
+            {
+                path:'singer/:singerId',
+                element:<SingerPage/>
+            },
+            {
+                path:'genre/:genreId',
+                element:<GenrePage/>
+            }
         ],
     },
 ]
