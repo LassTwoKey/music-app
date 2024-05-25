@@ -43,7 +43,7 @@ export class SingerService {
                 id: findedSinger._id,
                 name: findedSinger?.name,
                 imgUrl: findedSinger.imgUrl,
-                author: findedSinger?.music,
+                music: findedSinger?.music,
             }
         }
 
